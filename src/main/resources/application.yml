@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=OrderDemoDB;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: YourStrong@Passw0rd
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      pool-name: OrderServiceHikariPool
+
+logging:
+  level:
+    root: INFO
+    com.demo.orderservice: DEBUG
+    org.springframework.jdbc.core: DEBUG   # เห็น SQL/Stored Procedure ที่ถูกเรียกตอน debug
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
